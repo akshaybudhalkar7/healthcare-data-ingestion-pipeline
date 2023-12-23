@@ -25,7 +25,7 @@ class S3Stack(Stack):
         instance_type = ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE2, ec2.InstanceSize.MICRO)
         engine_version = aws_rds.MysqlEngineVersion.VER_8_0_28
 
-        subnets = vpc.select_subnets(subnet_type=ec2.SubnetType.PRIVATE_ISOLATED)
+        subnets = vpc.selectSubnets(subnet_type=ec2.SubnetType.PRIVATE_ISOLATED)
 
         # Create RDS Instance
         rds = aws_rds.DatabaseInstance(self, "heathcaredb",
