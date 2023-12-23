@@ -27,14 +27,14 @@ class S3Stack(Stack):
                       nat_gateways=1)
 
         # Free tier-eligible instance type
-        instance_type = ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE2, ec2.InstanceSize.MICRO)
+        instance_type = ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE2, ec2.InstanceSize.MICRO
+                                            )
+
+        engine_version = aws_rds.MysqlEngineVersion.VER_8_0_28
 
         # Create RDS Instance
         rds = aws_rds.DatabaseInstance(self, "heathcaredb",
-                                       engine=aws_rds.DatabaseInstanceEngine.SQL_SERVER_EE,
+                                       engine=aws_rds.DatabaseInstanceEngine.mysql(version=engine_version),
                                        instance_type=instance_type,
-                                       # master_username="admin",
-                                       # master_user_password="akshay@123",
-                                       vpc=vpc  # Specify your VPC
-                                       # vpc_placement={"subnet_type": ec2.SubnetType.PUBLIC}
+                                       vpc=vpc,  # Specify your VPC
                                        )
