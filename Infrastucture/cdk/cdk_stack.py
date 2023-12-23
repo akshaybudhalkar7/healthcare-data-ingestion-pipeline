@@ -21,10 +21,13 @@ class S3Stack(Stack):
                           ],
                       nat_gateways=1)
 
+        # Free tier-eligible instance type
+        instance_type = ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE2, ec2.InstanceSize.MICRO)
+
         # Create RDS Instance
         rds = aws_rds.DatabaseInstance(self, "heathcaredb",
                                        engine=aws_rds.DatabaseInstanceEngine.SQL_SERVER_EE,
-                                       instance_class="db.t3.micro",
+                                       instance_type=instance_type,
                                        master_username="admin",
                                        master_user_password="akshay123",
                                        vpc=vpc,  # Specify your VPC
