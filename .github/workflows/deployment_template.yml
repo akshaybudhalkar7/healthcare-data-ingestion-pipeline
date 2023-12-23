@@ -1,0 +1,54 @@
+name:  Deployment Template
+
+on:
+  workflow_call:
+    inputs:
+      region:
+        required: true
+        default: us-east-1
+        type: string
+      account:
+        required: true
+        type: string
+      account_number:
+        required: true
+        type: string
+      environment:
+        required: true
+        type: string
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    environment: ${{input.environment}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.1.0
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: arn:aws:iam::${{inputs.account_number}}:role/${{inputs.environment}}-healthcare-ingestion-oidc-role
+          aws-region: ${{inputs.region}}
+
+      - name: Setup Python 3.8
+        uses: actions/setup-python@v4.3.0
+        with:
+          python-version: 3.8
+
+      - name: Install Dependencies
+        uses: pip install -r requirements.txt
+
+      - name: Setup Node
+        uses: actions/setup-node@v3.5.1
+        with:
+          node-version: latest
+
+#      - name: Install AWS cdk
+#        run: npm install -g aws-cdk@2.40.0
+#
+#      - name: Run CDK Synth
+#        run: cdk synth ${{input.account}}
+#
+#      - name: Run Deployment
+#        run: cdk deploy ${{input.account}} -- require-approval never --verbose

@@ -1,0 +1,21 @@
+name: deployment.branch.HR-1
+
+on:
+  push:
+    branches:
+      - HR-1
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  job-sbx:
+    uses: ./.github/workflows/deployment-template.yml
+    secrets: inherit
+    with:
+      region: us-east-1
+      account: dev-healthcare-data-ingestion-pipeline
+      account_number: 441058194263
+      environment: dev
+
