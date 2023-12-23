@@ -44,11 +44,11 @@ jobs:
         with:
           node-version: latest
 
-#      - name: Install AWS cdk
-#        run: npm install -g aws-cdk@2.40.0
-#
-#      - name: Run CDK Synth
-#        run: cdk synth ${{input.account}}
-#
-#      - name: Run Deployment
-#        run: cdk deploy ${{input.account}} -- require-approval never --verbose
+      - name: Install AWS cdk
+        run: npm install -g aws-cdk@2.40.0
+
+      - name: Run CDK Synth
+        run: cdk synth ${{input.account}}
+
+      - name: Run Deployment
+        run: cdk deploy ${{input.account}} -- require-approval never --verbose
