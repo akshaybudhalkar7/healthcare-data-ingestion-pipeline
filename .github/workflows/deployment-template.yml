@@ -48,7 +48,7 @@ jobs:
         run: npm install -g aws-cdk@2.40.0
 
       - name: Run CDK Synth
-        run: cdk synth ${{input.account}}
+        run: cdk synth ${{inputs.account}}
 
       - name: Run Deployment
-        run: cdk deploy ${{input.account}} -- require-approval never --verbose
+        run: cdk deploy ${{inputs.account}} -- require-approval never --verbose
