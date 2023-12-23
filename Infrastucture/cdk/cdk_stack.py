@@ -22,7 +22,7 @@ class S3Stack(Stack):
                       nat_gateways=1)
 
         # Create RDS Instance
-        rds = aws_rds.DatabaseInstance(self, "HeathCareDB",
+        rds = aws_rds.DatabaseInstance(self, "heathcaredb",
                                        engine=aws_rds.DatabaseInstanceEngine.SQL_SERVER_EE,
                                        instance_class="db.t3.micro",
                                        master_username="admin",
