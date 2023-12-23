@@ -32,5 +32,5 @@ class S3Stack(Stack):
                                        engine=aws_rds.DatabaseInstanceEngine.mysql(version=engine_version),
                                        instance_type=instance_type,
                                        vpc=vpc,  # Specify your VPC
-                                       subnets = subnets
+                                       vpc_subnets=subnets
                                        )
