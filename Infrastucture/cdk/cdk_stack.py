@@ -13,23 +13,21 @@ class S3Stack(Stack):
                           ec2.SubnetConfiguration(name="Public",
                                                   subnet_type=ec2.SubnetType.PUBLIC,
                                                   cidr_mask=20),
-                          # ec2.SubnetConfiguration(
-                          #     name="Private",
-                          #     subnet_type=ec2.SubnetType.PRIVATE_ISOLATED,
-                          #     cidr_mask=20
-                          # ),
                           ec2.SubnetConfiguration(
                               name="Private",
-                              subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT,
+                              subnet_type=ec2.SubnetType.PRIVATE_ISOLATED,
                               cidr_mask=20
                           )
+                          # ec2.SubnetConfiguration(
+                          #     name="Private",
+                          #     subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT,
+                          #     cidr_mask=20
+                          # )
                           ],
                       nat_gateways=1)
 
         # Free tier-eligible instance type
-        instance_type = ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE2, ec2.InstanceSize.MICRO
-                                            )
-
+        instance_type = ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE2, ec2.InstanceSize.MICRO)
         engine_version = aws_rds.MysqlEngineVersion.VER_8_0_28
 
         # Create RDS Instance
