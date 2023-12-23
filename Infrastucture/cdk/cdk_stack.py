@@ -10,7 +10,7 @@ class S3Stack(Stack):
                       cidr='10.0.0.0/16',
                       max_azs=2,
                       subnet_configurations=[ec2.SubnetConfiguration(name="Public", subnet_type=ec2.SubnetType.PUBLIC, cidr_mask=24),
-                          ec2.SubnetConfiguration(name="Private", subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT, cidr_mask=24)],
+                          ec2.SubnetConfiguration(name="Private", subnet_type=ec2.SubnetType.PRIVATE, cidr_mask=24)],
                       nat_gateways=1
                       )
 
