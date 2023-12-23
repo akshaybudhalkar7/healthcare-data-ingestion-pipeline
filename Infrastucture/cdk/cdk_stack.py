@@ -21,6 +21,7 @@ class S3Stack(Stack):
                           ],
                       nat_gateways=1)
 
+
         # Free tier-eligible instance type
         instance_type = ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE2, ec2.InstanceSize.MICRO)
 
@@ -28,8 +29,12 @@ class S3Stack(Stack):
         rds = aws_rds.DatabaseInstance(self, "heathcaredb",
                                        engine=aws_rds.DatabaseInstanceEngine.SQL_SERVER_EE,
                                        instance_type=instance_type,
-                                       master_username="admin",
-                                       master_user_password="akshay@123",
+                                       # master_username="admin",
+                                       # master_user_password="akshay@123",
+                                       credentials={
+                                        "username": "admin",
+                                        "password": "akshay@123"
+                                       },
                                        vpc=vpc,  # Specify your VPC
                                        vpc_placement={"subnet_type": ec2.SubnetType.PUBLIC}
                                        )
