@@ -27,10 +27,10 @@ class S3Stack(Stack):
 
         # subnets = vpc.select_subnets(subnet_type=ec2.SubnetType.PRIVATE_ISOLATED)
 
-        # Create RDS Instance
-        rds = aws_rds.DatabaseInstance(self, "heathcaredb",
-                                       engine=aws_rds.DatabaseInstanceEngine.mysql(version=engine_version),
-                                       instance_type=instance_type,
-                                       vpc=vpc,  # Specify your VPC
-                                       vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_ISOLATED)
-                                       )
+        # # Create RDS Instance
+        # rds = aws_rds.DatabaseInstance(self, "heathcaredb",
+        #                                engine=aws_rds.DatabaseInstanceEngine.mysql(version=engine_version),
+        #                                instance_type=instance_type,
+        #                                vpc=vpc,  # Specify your VPC
+        #                                vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_ISOLATED)
+        #                                )
