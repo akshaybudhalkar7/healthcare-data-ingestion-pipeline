@@ -17,12 +17,12 @@ class S3Stack(Stack):
                               name="Private",
                               subnet_type=ec2.SubnetType.PRIVATE_ISOLATED,
                               cidr_mask=20
+                          ),
+                          ec2.SubnetConfiguration(
+                              name="Private",
+                              subnet_type=ec2.SubnetType.ISOLATED,
+                              cidr_mask=20
                           )
-                          # ec2.SubnetConfiguration(
-                          #     name="Private",
-                          #     subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT,
-                          #     cidr_mask=20
-                          # )
                           ],
                       nat_gateways=1)
 
