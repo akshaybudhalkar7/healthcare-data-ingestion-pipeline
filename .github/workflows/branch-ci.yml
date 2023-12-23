@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  job-sbx:
+  job-dev:
     uses: ./.github/workflows/deployment-template.yml
     secrets: inherit
     with:
