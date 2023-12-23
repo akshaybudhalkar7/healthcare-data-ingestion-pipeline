@@ -15,7 +15,7 @@ class S3Stack(Stack):
                                                   cidr_mask=20),
                           ec2.SubnetConfiguration(
                               name="Private",
-                              subnet_type=ec2.SubnetType.PRIVATE_ISOLATED,
+                              subnet_type=ec2.SubnetType.PRIVATE,
                               cidr_mask=20
                           )
                           ],
