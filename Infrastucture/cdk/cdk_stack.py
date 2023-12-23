@@ -1,4 +1,4 @@
-from aws_cdk import (aws_s3 as _s3, Stack, aws_ec2 as ec2)
+from aws_cdk import (aws_s3 as _s3, Stack, aws_ec2 as ec2, aws_rds as rds)
 from constructs import Construct
 
 
@@ -21,4 +21,7 @@ class S3Stack(Stack):
                           ],
                       nat_gateways=1)
 
-
+        # Create RDS Instance
+        rds = rds.DatabaseInstance(self, "HeathCareDB",
+                                   engine=rds.DatabaseInstanceEngine.SQL_SERVER_EE,
+                                   vpc=vpc)
