@@ -1,4 +1,4 @@
-from aws_cdk import (aws_s3 as _s3, Stack, aws_ec2 as ec2, aws_rds as rds)
+from aws_cdk import (aws_s3 as _s3, Stack, aws_ec2 as ec2, aws_rds )
 from constructs import Construct
 
 
@@ -22,6 +22,11 @@ class S3Stack(Stack):
                       nat_gateways=1)
 
         # Create RDS Instance
-        rds = rds.DatabaseInstance(self, "HeathCareDB",
-                                   engine=rds.DatabaseInstanceEngine.SQL_SERVER_EE,
-                                   vpc=vpc)
+        rds = aws_rds.DatabaseInstance(self, "HeathCareDB",
+                                       engine=aws_rds.DatabaseInstanceEngine.SQL_SERVER_EE,
+                                       instance_class="db.t3.micro",
+                                       master_username="admin",
+                                       master_user_password="akshay123",
+                                       vpc=vpc,  # Specify your VPC
+                                       vpc_placement={"subnet_type": ec2.SubnetType.PUBLIC}
+                                       )
