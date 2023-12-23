@@ -9,9 +9,10 @@ class S3Stack(Stack):
         vpc = ec2.Vpc(self, "Healthcare-data-ingestion-pipeline-vpc",
                       cidr='192.168.0.0/16',
                       max_azs=2,
-                      subnet_configurations=[ec2.SubnetConfiguration(name="Public", subnet_type=ec2.SubnetType.PUBLIC, cidr_mask=20),
-                          ec2.SubnetConfiguration(name="Private", subnet_type=ec2.SubnetType.PRIVATE_ISOLATED, cidr_mask=20)],
-                      nat_gateways=1
-                      )
+                      subnet_configurations=[
+                          ec2.SubnetConfiguration(name="Public",
+                                                  subnet_type=ec2.SubnetType.PUBLIC,
+                                                  cidr_mask=20)
+                      ])
 
 
