@@ -31,6 +31,6 @@ class S3Stack(Stack):
                                        instance_type=instance_type,
                                        # master_username="admin",
                                        # master_user_password="akshay@123",
-                                       # vpc=vpc  # Specify your VPC
+                                       vpc=vpc  # Specify your VPC
                                        # vpc_placement={"subnet_type": ec2.SubnetType.PUBLIC}
                                        )
